@@ -10,69 +10,69 @@ const routes: RouteRecordRaw[] = [
         path: '',
         name: 'Dashboard',
         component: () => import('@/views/Dashboard.vue'),
-        meta: { title: 'Dashboard' }
+        meta: { title: 'Dashboard' },
       },
       {
-        path: '/matches',
+        path: 'matches',
         name: 'Matches',
         component: () => import('@/views/Matches/MatchList.vue'),
-        meta: { title: 'Matches' }
+        meta: { title: 'Matches' },
       },
       {
-        path: '/matches/upload',
+        path: 'matches/upload',
         name: 'MatchUpload',
         component: () => import('@/views/Matches/MatchUpload.vue'),
-        meta: { title: 'Upload Match' }
+        meta: { title: 'Upload Match' },
       },
       {
-        path: '/matches/:id',
+        path: 'matches/:id',
         name: 'MatchDetail',
         component: () => import('@/views/Matches/MatchDetail.vue'),
-        meta: { title: 'Match Details' }
+        meta: { title: 'Match Details' },
       },
       {
-        path: '/matches/:id/analysis',
+        path: 'matches/:id/analysis',
         name: 'MatchAnalysis',
         component: () => import('@/views/Matches/MatchAnalysis.vue'),
-        meta: { title: 'Match Analysis' }
+        meta: { title: 'Match Analysis' },
       },
       {
-        path: '/players',
+        path: 'players',
         name: 'Players',
         component: () => import('@/views/Players/PlayerList.vue'),
-        meta: { title: 'Players' }
+        meta: { title: 'Players' },
       },
       {
-        path: '/players/enroll',
+        path: 'players/enroll',
         name: 'PlayerEnrollment',
         component: () => import('@/views/Players/PlayerEnrollment.vue'),
-        meta: { title: 'Enroll Player' }
+        meta: { title: 'Enroll Player' },
       },
       {
-        path: '/players/:id',
+        path: 'players/:id',
         name: 'PlayerDetail',
         component: () => import('@/views/Players/PlayerDetail.vue'),
-        meta: { title: 'Player Details' }
+        meta: { title: 'Player Details' },
       },
       {
-        path: '/tactical',
+        path: 'tactical',
         name: 'Tactical',
         component: () => import('@/views/Tactical/TacticalLab.vue'),
-        meta: { title: 'Tactical Laboratory' }
+        meta: { title: 'Tactical Laboratory' },
       },
       {
-        path: '/reports',
+        path: 'reports',
         name: 'Reports',
         component: () => import('@/views/Reports/ReportList.vue'),
-        meta: { title: 'Reports' }
+        meta: { title: 'Reports' },
       },
       {
-        path: '/settings',
+        path: 'settings',
         name: 'Settings',
         component: () => import('@/views/Settings/Profile.vue'),
-        meta: { title: 'Settings' }
+        meta: { title: 'Settings' },
       },
-    ]
+    ],
   },
   {
     path: '/auth',
@@ -82,16 +82,10 @@ const routes: RouteRecordRaw[] = [
         path: 'login',
         name: 'Login',
         component: () => import('@/views/Auth/Login.vue'),
-        meta: { title: 'Login' }
+        meta: { title: 'Login' },
       },
-    ]
+    ],
   },
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound',
-    component: () => import('@/views/NotFound.vue'),
-    meta: { title: '404 - Not Found' }
-  }
 ]
 
 const router = createRouter({
@@ -100,14 +94,13 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
-    } else {
-      return { top: 0 }
     }
-  }
+    return { top: 0 }
+  },
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} | MouBAI Formula` || 'MouBAI Formula'
+  document.title = `${to.meta.title || 'MouBAI'} | MouBAI Formula`
   next()
 })
 
